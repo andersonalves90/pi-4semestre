@@ -19,6 +19,8 @@ import br.com.senac.tsi.pi4.Produto;
 
 import com.google.gson.Gson;
 
+
+
 @Path ("/produto")
 public class ProductService {
 	
@@ -47,7 +49,7 @@ public class ProductService {
 			return Response.status(500).entity(null).build();
 		}
 		if (produto == null)
-			return Response.status(200).entity(produto).build();
+			return Response.status(404).entity(produto).build();
 		else
 			return Response.status(200).entity(produto).build();
 		
@@ -64,5 +66,12 @@ public class ProductService {
 		return Response.status(200).entity("").build();
  
 	}
-		
+	
+	
+	
+	
+	
+	
+	
+	
 }
