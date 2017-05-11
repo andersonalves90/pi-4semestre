@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jumpers.delta.sistemasparainter.net.appdelta.CadastroActivity">
+
+    <Button
+        android:text="Cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CadButton"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:text="Cadastre-se"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:textSize="36sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Telefone Residencial"
+        android:ems="10"
+        android:id="@+id/CadTelRes"
+        android:textColor="?android:attr/colorControlNormal"
+        android:textSize="16sp"
+        android:layout_above="@+id/CadTelCom"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Telefone Comercial"
+        android:ems="10"
+        android:id="@+id/CadTelCom"
+        android:textColor="?android:attr/colorControlNormal"
+        android:textSize="16sp"
+        android:layout_above="@+id/CadButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Celular"
+        android:ems="10"
+        android:id="@+id/CadCelular"
+        android:textColor="?android:attr/colorControlNormal"
+        android:textSize="16sp"
+        android:layout_above="@+id/CadTelRes"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Senha"
+        android:id="@+id/CadSenha"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/CadCelular"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint="E-mail"
+        android:id="@+id/CadEmail"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/CadSenha"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="CPF"
+        android:ems="10"
+        android:id="@+id/CadCPF"
+        android:textSize="16sp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/CadEmail"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Nome"
+        android:ems="10"
+        android:id="@+id/CadNome"
+        android:textColor="?android:attr/colorControlNormal"
+        android:textSize="16sp"
+        android:layout_above="@+id/CadCPF"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp" />
+
+</RelativeLayout>

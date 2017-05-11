@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sobre"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jumpers.delta.sistemasparainter.net.appdelta.Sobre">
+
+    <TextView
+        android:text="Sobre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sobreTitle"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:color/darker_gray"
+        android:layout_below="@+id/name1"
+        android:layout_marginTop="18dp"
+        android:id="@+id/integrante2"
+        android:layout_toEndOf="@+id/integrante1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:color/darker_gray"
+        android:layout_below="@+id/name2"
+        android:layout_alignStart="@+id/integrante2"
+        android:layout_marginTop="23dp"
+        android:id="@+id/integrante3" />
+
+    <TextView
+        android:text="Integrante 2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name2"
+        android:layout_below="@+id/integrante2"
+        android:layout_alignStart="@+id/name1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:color/darker_gray"
+        android:layout_below="@+id/name3"
+        android:layout_alignStart="@+id/integrante3"
+        android:layout_marginTop="21dp"
+        android:id="@+id/integrante4" />
+
+    <TextView
+        android:text="Integrante 4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/integrante4"
+        android:layout_alignStart="@+id/name3"
+        android:id="@+id/name4" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:color/darker_gray"
+        android:layout_alignTop="@+id/name5"
+        android:id="@+id/integrante5"
+        android:layout_toEndOf="@+id/integrante4" />
+
+    <TextView
+        android:text="Integrante 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:id="@+id/name1"
+        android:layout_alignTop="@+id/integrante1"
+        android:layout_toEndOf="@+id/sobreTitle" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:color/darker_gray"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="33dp"
+        android:id="@+id/integrante1"
+        android:layout_below="@+id/sobreTitle"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Integrante 3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name3"
+        android:layout_alignTop="@+id/integrante3"
+        android:layout_alignStart="@+id/name2" />
+
+    <TextView
+        android:text="Integrante 5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name5"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/name4" />
+
+    <TextView
+        android:text="Lorem ipsum dolor sit amet, eam ut dignissim democritum vituperata. Duo affert iudicabit incorrupte no, ad pro falli veniam, assentior appellantur cu has. Vix iuvaret suscipit reformidans ea, vis ad alia possim alienum. Agam legimus ius ea, usu admodum gloriatur eu, ut ubique voluptua nam. An mel copiosae praesent dignissim. Qui stet tamquam eligendi cu, munere libris ne ius, vel tale quaerendum ut. "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/descricao"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="27dp" />
+
+</RelativeLayout>
