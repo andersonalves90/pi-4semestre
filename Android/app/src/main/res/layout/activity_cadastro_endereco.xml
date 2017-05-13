@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro_endereco"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jumpers.delta.sistemasparainter.net.appdelta.CadastroEnderecoActivity">
+
+    <TextView
+        android:text="Cadastro de endereço"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CadEndTitle"
+        android:textSize="28sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Nº"
+        android:ems="10"
+        android:id="@+id/CadEndNum"
+        android:layout_below="@+id/CadEndLogradouro"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Logradouro"
+        android:ems="10"
+        android:id="@+id/CadEndLogradouro"
+        android:layout_below="@+id/CadEndTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:text="Cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CadEndButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Complemento"
+        android:ems="10"
+        android:id="@+id/CadEndCompl"
+        android:layout_below="@+id/CadEndNum"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Bairro"
+        android:ems="10"
+        android:id="@+id/CadEndBairro"
+        android:layout_below="@+id/CadEndCompl"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Cidade"
+        android:ems="10"
+        android:id="@+id/CadEndCidade"
+        android:layout_below="@+id/CadEndBairro"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="UF"
+        android:ems="10"
+        android:id="@+id/CadEndUf"
+        android:layout_below="@+id/CadEndCidade"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="CEP"
+        android:ems="10"
+        android:id="@+id/CadEndCEP"
+        android:layout_marginBottom="32dp"
+        android:layout_above="@+id/CadEndButton"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
