@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cadastro_endereco"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jumpers.delta.sistemasparainter.net.appdelta.CadastroEnderecoActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="CEP"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="46dp"
+        android:id="@+id/cedCep" />
+
+    <TextView
+        android:text="Cadastro de endereço"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/cedCep"
+        android:layout_marginTop="18dp"
+        android:id="@+id/cedCadastro" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Logradouro"
+        android:ems="10"
+        android:layout_below="@+id/cedCep"
+        android:layout_alignStart="@+id/cedCep"
+        android:id="@+id/cedLogradouro" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Estado"
+        android:ems="10"
+        android:id="@+id/cedEstado"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/cedBairro" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Nº"
+        android:ems="10"
+        android:id="@+id/cedNumero"
+        android:layout_below="@+id/cedLogradouro"
+        android:layout_alignStart="@+id/cedLogradouro" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Bairro"
+        android:ems="10"
+        android:id="@+id/cedBairro"
+        android:layout_above="@+id/cedEstado"
+        android:layout_alignStart="@+id/cedNumero" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Complemento"
+        android:ems="10"
+        android:layout_alignBottom="@+id/cedNumero"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/cedComplemento" />
+
+    <Button
+        android:text="Cadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cedEstado"
+        android:layout_marginTop="32dp"
+        android:id="@+id/cedBtnCadastrar"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Cidade"
+        android:ems="10"
+        android:id="@+id/cedCidade"
+        android:layout_alignBaseline="@+id/cedBairro"
+        android:layout_alignBottom="@+id/cedBairro"
+        android:layout_toEndOf="@+id/cedCadastro"
+        android:layout_alignStart="@+id/cedComplemento" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="UF"
+        android:ems="10"
+        android:layout_below="@+id/cedBairro"
+        android:id="@+id/cedUf"
+        android:layout_toEndOf="@+id/cedCadastro"
+        android:layout_alignStart="@+id/cedCidade" />
+</RelativeLayout>
