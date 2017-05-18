@@ -44,7 +44,7 @@
         android:ems="10"
         android:hint="Senha"
         android:textSize="20sp"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/logEntrar"

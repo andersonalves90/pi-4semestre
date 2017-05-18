@@ -34,7 +34,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="CPF"
         android:ems="10"
         android:id="@+id/cadCpf"
@@ -51,8 +51,6 @@
         android:hint="E-mail"
         android:id="@+id/cadEmail" />
 
-
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,11 +61,57 @@
         android:hint="Senha"
         android:id="@+id/cadSenha" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/cadSenha"
+        android:layout_alignStart="@+id/cadSenha"
+        android:hint="Celular"
+        android:id="@+id/cadCelular" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/cadCelular"
+        android:layout_alignStart="@+id/cadCelular"
+        android:hint="Telefone-Comercial"
+        android:id="@+id/cadComercial" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/cadComercial"
+        android:layout_alignStart="@+id/cadComercial"
+        android:hint="Telefone-Residencial"
+        android:id="@+id/cadResidencial" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_below="@+id/cadResidencial"
+        android:layout_alignStart="@+id/cadResidencial"
+        android:hint="Data de Nascimento"
+        android:id="@+id/cadDatNasc" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_below="@+id/cadDatNasc"
+        android:layout_alignStart="@+id/cadDatNasc"
+        android:hint="Data de Nascimento"
+        android:id="@+id/cadRecNlett" />
     <Button
         android:text="Cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cadSenha"
+        android:layout_below="@+id/cadRecNlett"
         android:layout_marginTop="20dp"
         android:id="@+id/cadBtnCadastrar"
         android:layout_alignParentEnd="true"
