@@ -37,35 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         logSenha = (EditText) findViewById(R.id.logSenha);
         logEntra = (Button) findViewById(R.id.logEntrar);
 
-        logEntra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(LoginActivity.this,ProdutoActivity.class);
-                //startActivity(intent);
-
-                String email = logEmail.getText().toString();
-                String senha = logSenha.getText().toString();
-
-                if (logEmail.equals("")) {
-                    logEmail.setError("campo obrigatório");
-                    return;
-                }
-                if (logSenha.equals("")) {
-                    logSenha.setError("campo obrigatório");
-                    return;
-                }
-                if ((!logEmail.equals(null)) && (!logSenha.equals(null))) {
-
-                    NetworkCall myCall = new NetworkCall();
-                    myCall.execute("http://viacep.com.br/ws/" + cep + "/json/");
-
-                  myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
-                }
-
-            }
-        });
     }
-
     public class NetworkCall extends AsyncTask<String, Void, String> {
 
         // Esse é o método que executa a tarefa em segundo plano
@@ -104,39 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             return null;
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            try {
-                if(result.equals(true)){
-                    Intent intent = new Intent(LoginActivity.this,ProdutoActivity.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Snackbar.make(v, msgStatus, Snackbar.LENGTH_SHORT).setAction("Ação", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                            builder.setCancelable(false);
-                            builder.setTitle("Ação da Snackbar");
-                            builder.setMessage("Usuário ou senha incorretos");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int id) {
-
-                                }
-                            });
-                            // Create the AlertDialog object and return it
-                            builder.create().show();
-                        }
-                    }).show();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
     }
 }
