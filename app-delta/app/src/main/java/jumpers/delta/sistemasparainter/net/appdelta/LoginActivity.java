@@ -38,34 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         logSenha = (EditText) findViewById(R.id.logSenha);
         logEntra = (Button) findViewById(R.id.logEntrar);
 
-        logEntra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(LoginActivity.this,ProdutoActivity.class);
-                //startActivity(intent);
-
-                String email = logEmail.getText().toString();
-                String senha = logSenha.getText().toString();
-
-                if (logEmail.equals("")) {
-                    logEmail.setError("campo obrigatório");
-                    return;
-                }
-                if (logSenha.equals("")) {
-                    logSenha.setError("campo obrigatório");
-                    return;
-                }
-                if ((!logEmail.equals(null)) && (!logSenha.equals(null))) {
-
-                    NetworkCall myCall = new NetworkCall();
-
-                  myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
-                }
-
-            }
-        });
     }
-
     public class NetworkCall extends AsyncTask<String, Void, String> {
 
         // Esse é o método que executa a tarefa em segundo plano
@@ -104,26 +77,6 @@ public class LoginActivity extends AppCompatActivity {
             return null;
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            try {
-                if (result.equals("true")) {
-                    Intent intent = new Intent(LoginActivity.this, ProdutoActivity.class);
-                    startActivity(intent);
-
-
-                } else {
-                    Snackbar snackbar = Snackbar
-                            .make(logEntra, "Usuário ou senha incorretos", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
     }
 }
