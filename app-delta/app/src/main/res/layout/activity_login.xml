@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
@@ -57,11 +58,12 @@
         android:text="Entrar"
         android:textSize="20sp"/>
 
-    <ProgressBar
-        android:id="@+id/simpleProgressBar"
+    <ImageView
+        android:id="@+id/logimageLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:visibility="invisible"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="34dp"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
 </RelativeLayout>

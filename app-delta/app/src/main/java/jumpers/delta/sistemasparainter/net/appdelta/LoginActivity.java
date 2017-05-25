@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView logLogin;
     EditText logEmail = null;
     EditText logSenha = null;
+    ImageView logimageLogo;
     Button logEntra;
 
 
@@ -41,17 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         logLogin = (TextView) findViewById(R.id.logLogin);
             logEmail = (EditText) findViewById(R.id.logEmail);
             logSenha = (EditText) findViewById(R.id.logSenha);
-        final ProgressBar simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
-        logEntra = (Button) findViewById(R.id.logEntrar);
+            logimageLogo =(ImageView) findViewById(R.id.logimageLogo);
+            logEntra = (Button) findViewById(R.id.logEntrar);
 
 
 
         logEntra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(LoginActivity.this,ProdutoActivity.class);
-                //startActivity(intent);
-
 
                 String email = logEmail.getText().toString();
                 String senha = logSenha.getText().toString();
@@ -59,8 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                 //Restaura as preferencias gravadas
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 logEmail.setText(settings.getString("LogEmail", "email"));
-
-
 
                 if (email.equals("")) {
                     logEmail.setError("campo obrigatório");
@@ -70,19 +67,14 @@ public class LoginActivity extends AppCompatActivity {
                     logSenha.setError("campo obrigatório");
                     return;
                 }
-
-
                     NetworkCall myCall = new NetworkCall();
 
                   myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
 
-                simpleProgressBar.setVisibility(View.VISIBLE);
-                /*
-
-                dialog = ProgressDialog.show(LoginActivity.this," E commerce","Carregando!!", false, true);
+                dialog = ProgressDialog.show(LoginActivity.this,"","Logando...", false,true);
                 dialog.setIcon(R.drawable.ic_launcher);
                 dialog.setCancelable(false);
-                */
+
             }
         });
     }

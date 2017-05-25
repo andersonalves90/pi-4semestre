@@ -16,10 +16,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Cliente;
@@ -80,6 +89,7 @@ public class CadastroActivity extends AppCompatActivity {
                 String telComercial = cadResidencial.getText().toString();
                 String telResidencial = cadComercial.getText().toString();
                 String dataNac = cadDatNasc.getText().toString();
+                String dataFormatada = "";
                 String newLesttter = cadOpcao.getText().toString();
                 Cliente cliente = new Cliente();
 
@@ -125,30 +135,62 @@ public class CadastroActivity extends AppCompatActivity {
 
                     cliente.setRecebeNewsLetter(newLesttter);
 
-                    String dataNacCusto = dataNac.replaceAll("[^0-9]+","");
+                try {
+                    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                    Date data = formato.parse(dataNac);
+                    formato.applyPattern("yyyy/MM/dd");
+                    dataFormatada = formato.format(data);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String dataNacCusto = dataFormatada.replaceAll("[^0-9]+","");
                     cliente.setDtNascCliente(dataNacCusto);
 
-
-               JSONObject json =new JSONObject();
+               JSONObject jsonCliente =new JSONObject();
                 try {
-                    json.put("nomeCompletoCliente",cliente.getNomeCompletoCliente());
-                    json.put("emailCliente",cliente.getEmailCliente());
-                    json.put("senhaCliente",cliente.getSenhaCliente());
-                    json.put("CPFCliente",cliente.getCPFCliente());
-                    json.put("celularCliente",cliente.getCelularCliente());
-                    json.put("telComercialCliente",cliente.getTelComercialCliente());
-                    json.put("telResidencialCliente",cliente.getTelResidencialCliente());
-                    json.put("dtNascCliente",cliente.getDtNascCliente());
-                    json.put("recebeNewsLetter",cliente.getNomeCompletoCliente());
+                    jsonCliente.put("nomeCompletoCliente",cliente.getNomeCompletoCliente());
+                    jsonCliente.put("emailCliente",cliente.getEmailCliente());
+                    jsonCliente.put("senhaCliente",cliente.getSenhaCliente());
+                    jsonCliente.put("cpfCliente",cliente.getCPFCliente());
+                    jsonCliente.put("celularCliente",cliente.getCelularCliente());
+                    jsonCliente.put("telComercialCliente",cliente.getTelComercialCliente());
+                    jsonCliente.put("telResidencialCliente",cliente.getTelResidencialCliente());
+                    jsonCliente.put("dtNascCliente",cliente.getDtNascCliente());
+                    jsonCliente.put("recebeNewsLetter",cliente.getNomeCompletoCliente());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                NetworkCall myCall = new NetworkCall();
 
-                System.out.println(json);
-                dialog = ProgressDialog.show(CadastroActivity.this," E commerce","Carregando!!", false, true);
+            //    NetworkCall myCall = new NetworkCall();
+
+                String parametro = null;
+                try {
+                  //  parametro = URLEncoder.encode("parametro","UTF-8");
+                    URL url = new URL("http://deltaws.azurewebsites.net/g2/rest/cliente");
+                    HttpURLConnection con= (HttpURLConnection) url.openConnection();
+                    con.setDoOutput(true);
+                    con.setRequestMethod("POST");
+                    con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                    OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
+                    out.write(jsonCliente.toString());
+
+
+                    out.close();
+                    InputStream in = con.getInputStream();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                System.out.println(jsonCliente);
+                dialog = ProgressDialog.show(CadastroActivity.this,"","Cadastrando...", false,true);
                 dialog.setIcon(R.drawable.ic_launcher);
-                 dialog.setCancelable(false);
+                dialog.setCancelable(false);
 
             }
         });
