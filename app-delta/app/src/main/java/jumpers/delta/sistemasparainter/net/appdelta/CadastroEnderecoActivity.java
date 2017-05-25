@@ -31,17 +31,27 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_endereco);
         cedBairro = (EditText) findViewById(R.id.cedBairro);
-      //  cedBairro.addTextChangedListener(Mask.insert("", cedBairro));
+        cedBairro.addTextChangedListener(Mask.insert("##################", cedBairro));
+
         cedLogradouro = (EditText) findViewById(R.id.cedLogradouro);
+        cedLogradouro.addTextChangedListener(Mask.insert("#################", cedLogradouro));
+
         cedNumero = (EditText) findViewById(R.id.cedNumero);
         cedNumero.addTextChangedListener(Mask.insert("#####", cedNumero));
+
         cedCep = (EditText) findViewById(R.id.cedCep);
         cedCep.addTextChangedListener(Mask.insert("###-##-###", cedCep));
+
         cedComplemento = (EditText) findViewById(R.id.cedComplemento);
+
         cedCidade = (EditText) findViewById(R.id.cedCidade);
+        cedCidade.addTextChangedListener(Mask.insert("###-##-###", cedCidade));
+
         cedPais = (EditText) findViewById(R.id.cedPais);
+
         cedUf = (EditText) findViewById(R.id.cedUf);
         cedUf.addTextChangedListener(Mask.insert("##", cedUf));
+
         cedCadastro = (TextView) findViewById(R.id.cedCadastro);
         cedBtnCadastrar= (Button)findViewById(R.id.cedBtnCadastrar);
 
@@ -71,7 +81,8 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                     cedLogradouro.setError("campo obrigatório");
                     return;
                 } else {
-                    endereco.setLogradouroEndereco(lougradouro);
+                    String logCusto = lougradouro.replaceAll("[^0-9]+","");
+                    endereco.setLogradouroEndereco(logCusto);
                 }
 
                 if (numero.equals("")&& (numero.length() > 10)) {
@@ -86,8 +97,8 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                     cedBairro.setError("campo obrigatório");
                     return;
                 } else {
-
-                    endereco.setNomeEndereco(bairro);
+                    String bairrCusto = bairro.replaceAll("[^0-9]+","");
+                    endereco.setNomeEndereco(bairrCusto);
                 }
 
                 if (cidade.equals("")) {
@@ -117,8 +128,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                 }
 
 
-
-                dialog = ProgressDialog.show(CadastroEnderecoActivity.this," E commerce","Carregando!!", false, true);
+                dialog = ProgressDialog.show(CadastroEnderecoActivity.this,"","Cadastrando!!", false, true);
                 dialog.setIcon(R.drawable.ic_launcher);
                 dialog.setCancelable(false);
                 System.out.println(json);
