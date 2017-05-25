@@ -19,15 +19,16 @@ import java.net.URL;
 public class CadastroActivity extends AppCompatActivity {
 
     TextView cadCadastro;
-    EditText cadNome =null ;
+    EditText cadNome = null;
     EditText cadCpf = null;
     EditText cadEmail = null;
     EditText cadSenha = null;
-    EditText cadCelular=null ;
+    EditText cadCelular = null;
     EditText cadComercial = null;
     EditText cadResidencial = null;
     EditText cadDatNasc = null;
-    Button cadBtnCadastrar  = null;
+    Button cadBtnCadastrar = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,62 +46,63 @@ public class CadastroActivity extends AppCompatActivity {
         cadBtnCadastrar = (Button) findViewById(R.id.cadBtnCadastrar);
 
 
-      cadBtnCadastrar.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
+        cadBtnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-              String nome = cadNome.getText().toString();
-              String cpf = cadCpf.getText().toString();
-              String email = cadEmail.getText().toString();
-              String senha = cadSenha.getText().toString();
-              String celular = cadCelular.getText().toString();
-              String telComercial = cadResidencial.getText().toString();
-              String telResidencial= cadComercial.getText().toString();
-              String dataNac= cadDatNasc.getText().toString();
+                String nome = cadNome.getText().toString();
+                String cpf = cadCpf.getText().toString();
+                String email = cadEmail.getText().toString();
+                String senha = cadSenha.getText().toString();
+                String celular = cadCelular.getText().toString();
+                String telComercial = cadResidencial.getText().toString();
+                String telResidencial = cadComercial.getText().toString();
+                String dataNac = cadDatNasc.getText().toString();
 
-              if (cadNome.equals("")) {
-                  cadNome.setError("campo obrigatório");
-                  return;
-              }
-              if (cadCpf.equals("")) {
-                  cadCpf.setError("campo obrigatório");
-                  return;
-              }
-              if (cadEmail.equals("")) {
-                  cadEmail.setError("campo obrigatório");
-                  return;
-              }
-              if (cadSenha.equals("")) {
-                  cadSenha.setError("campo obrigatório");
-                  return;
-              }
-              if (cadCelular.equals("")) {
-                  cadCelular.setError("campo obrigatório");
-                  return;
-              }
-              if (cadComercial.equals("")) {
-                  cadComercial.setError("campo obrigatório");
-                  return;
-              }
-              if (cadResidencial.equals("")) {
-                  cadResidencial.setError("campo obrigatório");
-                  return;
-              }
-              if (cadDatNasc.equals("")) {
-                  cadDatNasc.setError("campo obrigatório");
-                  return;
-              }
+                if (cadNome.equals("")) {
+                    cadNome.setError("campo obrigatório");
+                    return;
+                }
+                if (cadCpf.equals("")) {
+                    cadCpf.setError("campo obrigatório");
+                    return;
+                }
+                if (cadEmail.equals("")) {
+                    cadEmail.setError("campo obrigatório");
+                    return;
+                }
+                if (cadSenha.equals("")) {
+                    cadSenha.setError("campo obrigatório");
+                    return;
+                }
+                if (cadCelular.equals("")) {
+                    cadCelular.setError("campo obrigatório");
+                    return;
+                }
+                if (cadComercial.equals("")) {
+                    cadComercial.setError("campo obrigatório");
+                    return;
+                }
+                if (cadResidencial.equals("")) {
+                    cadResidencial.setError("campo obrigatório");
+                    return;
+                }
+                if (cadDatNasc.equals("")) {
+                    cadDatNasc.setError("campo obrigatório");
+                    return;
+                }
 
-              if  (!cadNome.equals(null)&& (!cadCpf.equals(null)&& (!cadEmail.equals(null)&& (!cadSenha.equals(null)&&(!cadCelular.equals(null) && (!cadComercial.equals(null) && (!cadResidencial.equals(null) && (!cadDatNasc.equals(null))))))))){
+                if (!cadNome.equals(null) && (!cadCpf.equals(null) && (!cadEmail.equals(null) && (!cadSenha.equals(null) && (!cadCelular.equals(null) && (!cadComercial.equals(null) && (!cadResidencial.equals(null) && (!cadDatNasc.equals(null))))))))) {
 /*
                   CadastroActivity.NetworkCall myCall = new NetworkCall();
 
                   myCall.execute("http://deltaws.azurewebsites.net/g2/rest/cliente/" + nome + "/" + cpf + "/" + email + "/" + senha + "/" + celular + "/" + telComercial + "/" + telResidencial + "/" + dataNac);
 */
-              }
+                }
 
-          }
-      });
-
+            }
+        });
+    }
+}
 
 

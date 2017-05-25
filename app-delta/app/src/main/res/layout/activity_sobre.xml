@@ -124,11 +124,21 @@
 
 
     <TextView
-        android:text="Unidos para alcansar o sucesso profissional"
+        android:id="@+id/sobDescricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/sobDescricao"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="App criado para o Projeto Integrador do Senac" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WJumpers develop"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/sobTitle"
+        android:layout_alignBottom="@+id/sobTitle"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
