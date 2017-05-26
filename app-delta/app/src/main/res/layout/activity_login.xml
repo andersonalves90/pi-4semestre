@@ -59,11 +59,13 @@
         android:textSize="20sp"/>
 
     <ImageView
-        android:id="@+id/logimageLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="34dp"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        android:id="@+id/imagelogo"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_above="@+id/logEmail"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

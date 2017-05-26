@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     TextView logLogin;
     EditText logEmail = null;
     EditText logSenha = null;
-    ImageView logimageLogo;
     Button logEntra;
 
 
@@ -43,14 +42,15 @@ public class LoginActivity extends AppCompatActivity {
         logLogin = (TextView) findViewById(R.id.logLogin);
             logEmail = (EditText) findViewById(R.id.logEmail);
             logSenha = (EditText) findViewById(R.id.logSenha);
-            logimageLogo =(ImageView) findViewById(R.id.logimageLogo);
             logEntra = (Button) findViewById(R.id.logEntrar);
+
 
 
 
         logEntra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 String email = logEmail.getText().toString();
                 String senha = logSenha.getText().toString();
@@ -137,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     AlertDialog.Builder builder = new
                             AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage("Você não esta cadastrado!");
+                    builder.setMessage("Você não está cadastrado!");
                     AlertDialog dialog = builder.create();
                     dialog.show();
 

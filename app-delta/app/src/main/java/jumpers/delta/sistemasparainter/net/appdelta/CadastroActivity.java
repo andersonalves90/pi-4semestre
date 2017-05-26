@@ -30,13 +30,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Cliente;
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Mask;
 
 public class CadastroActivity extends AppCompatActivity {
     private ProgressDialog dialog;
-
+    JSONObject jsonCliente =new JSONObject();
     TextView cadCadastro;
     EditText cadNome = null;
     EditText cadEmail = null;
@@ -147,7 +146,7 @@ public class CadastroActivity extends AppCompatActivity {
                 String dataNacCusto = dataFormatada.replaceAll("[^0-9]+","");
                     cliente.setDtNascCliente(dataNacCusto);
 
-               JSONObject jsonCliente =new JSONObject();
+
                 try {
                     jsonCliente.put("nomeCompletoCliente",cliente.getNomeCompletoCliente());
                     jsonCliente.put("emailCliente",cliente.getEmailCliente());
@@ -162,30 +161,9 @@ public class CadastroActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-            //    NetworkCall myCall = new NetworkCall();
-
+               NetworkCall myCall = new NetworkCall();
+                myCall.execute((String)null);
                 String parametro = null;
-                try {
-                  //  parametro = URLEncoder.encode("parametro","UTF-8");
-                    URL url = new URL("http://deltaws.azurewebsites.net/g2/rest/cliente");
-                    HttpURLConnection con= (HttpURLConnection) url.openConnection();
-                    con.setDoOutput(true);
-                    con.setRequestMethod("POST");
-                    con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                    OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
-                    out.write(jsonCliente.toString());
-
-
-                    out.close();
-                    InputStream in = con.getInputStream();
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
 
                 System.out.println(jsonCliente);
                 dialog = ProgressDialog.show(CadastroActivity.this,"","Cadastrando...", false,true);
@@ -201,14 +179,21 @@ public class CadastroActivity extends AppCompatActivity {
         // Esse é o método que executa a tarefa em segundo plano
         @Override
         protected String doInBackground(String... params) {
+
             try {
-                // Cria o objeto de conexão
-                HttpURLConnection urlConnection = (HttpURLConnection) new URL(params[0]).openConnection();
+                // parametro = URLEncoder.encode("parametro","UTF-8");
+                URL url = new URL("http://deltaws.azurewebsites.net/g2/rest/cliente");
+                HttpURLConnection con= (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type", "application/json");
+                OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
+                out.write(jsonCliente.toString());
 
-                // Executa a requisição pegando os dados
-                InputStream in = urlConnection.getInputStream();
-
-                // Cria um leitor para ler a resposta
+                out.close();
+                int resultCode = con.getResponseCode();
+                System.out.println(con.getResponseCode());
+                InputStream in = con.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
                 StringBuilder resultado = new StringBuilder();
@@ -225,8 +210,11 @@ public class CadastroActivity extends AppCompatActivity {
 
                 // Retorna a string final contendo a resposta retornada
                 return respostaCompleta;
-
-            } catch (Exception e) {
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -238,16 +226,11 @@ public class CadastroActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             try {
-                if (result.equals("true")) {
-                    Intent intent = new Intent(CadastroActivity.this, CadastroEnderecoActivity.class);
-                    startActivity(intent);
 
-
-                } else {
                     Snackbar snackbar = Snackbar
-                            .make(cadBtnCadastrar, "Dados  incorretos", Snackbar.LENGTH_LONG);
+                            .make(cadBtnCadastrar, "Valor " + result, Snackbar.LENGTH_LONG);
                     snackbar.show();
-                }
+
 
             } catch (Exception e) {
                 e.printStackTrace();
