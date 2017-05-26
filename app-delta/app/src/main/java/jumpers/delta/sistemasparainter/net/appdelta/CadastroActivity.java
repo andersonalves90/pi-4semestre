@@ -1,5 +1,6 @@
 package jumpers.delta.sistemasparainter.net.appdelta;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
@@ -7,27 +8,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import jumpers.delta.sistemasparainter.net.appdelta.entities.Cliente;
+import jumpers.delta.sistemasparainter.net.appdelta.entities.Mask;
 
 public class CadastroActivity extends AppCompatActivity {
-
+    private ProgressDialog dialog;
+    JSONObject jsonCliente =new JSONObject();
     TextView cadCadastro;
     EditText cadNome = null;
-    EditText cadCpf = null;
-    EditText cadEmail = null;
-    EditText cadSenha = null;
-    EditText cadCelular = null;
-    EditText cadComercial = null;
-    EditText cadResidencial = null;
-    EditText cadDatNasc = null;
-    Button cadBtnCadastrar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +46,24 @@ public class CadastroActivity extends AppCompatActivity {
 
         cadCadastro = (TextView) findViewById(R.id.cadCadastro);
         cadNome = (EditText) findViewById(R.id.cadNome);
-        cadCpf = (EditText) findViewById(R.id.cadCpf);
         cadEmail = (EditText) findViewById(R.id.cadEmail);
         cadSenha = (EditText) findViewById(R.id.cadSenha);
+        cadCpf = (EditText) findViewById(R.id.cadCpf);
+        cadCpf.addTextChangedListener(Mask.insert("###.###.###-##", cadCpf));
+
         cadCelular = (EditText) findViewById(R.id.cadCelular);
+        cadCelular.addTextChangedListener(Mask.insert("(##)####-#####", cadCelular));
+        //até 20caracteres
         cadComercial = (EditText) findViewById(R.id.cadComercial);
+        cadComercial.addTextChangedListener(Mask.insert("(##)####-#####", cadComercial));
+        //até 20caracteres
         cadResidencial = (EditText) findViewById(R.id.cadResidencial);
+        cadResidencial.addTextChangedListener(Mask.insert("(##)####-#####", cadResidencial));
+        //até 20caracteres
         cadDatNasc = (EditText) findViewById(R.id.cadDatNasc);
+        cadDatNasc.addTextChangedListener(Mask.insert("##/##/####", cadDatNasc));
+        //até 3 caracteres
+        cadOpcao = (CheckBox) findViewById(R.id.cadOpcao);
         cadBtnCadastrar = (Button) findViewById(R.id.cadBtnCadastrar);
 
 
@@ -51,54 +72,10 @@ public class CadastroActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String nome = cadNome.getText().toString();
-                String cpf = cadCpf.getText().toString();
-                String email = cadEmail.getText().toString();
-                String senha = cadSenha.getText().toString();
                 String celular = cadCelular.getText().toString();
                 String telComercial = cadResidencial.getText().toString();
                 String telResidencial = cadComercial.getText().toString();
                 String dataNac = cadDatNasc.getText().toString();
-
-                if (cadNome.equals("")) {
-                    cadNome.setError("campo obrigatório");
-                    return;
-                }
-                if (cadCpf.equals("")) {
-                    cadCpf.setError("campo obrigatório");
-                    return;
-                }
-                if (cadEmail.equals("")) {
-                    cadEmail.setError("campo obrigatório");
-                    return;
-                }
-                if (cadSenha.equals("")) {
-                    cadSenha.setError("campo obrigatório");
-                    return;
-                }
-                if (cadCelular.equals("")) {
-                    cadCelular.setError("campo obrigatório");
-                    return;
-                }
-                if (cadComercial.equals("")) {
-                    cadComercial.setError("campo obrigatório");
-                    return;
-                }
-                if (cadResidencial.equals("")) {
-                    cadResidencial.setError("campo obrigatório");
-                    return;
-                }
-                if (cadDatNasc.equals("")) {
-                    cadDatNasc.setError("campo obrigatório");
-                    return;
-                }
-
-                if (!cadNome.equals(null) && (!cadCpf.equals(null) && (!cadEmail.equals(null) && (!cadSenha.equals(null) && (!cadCelular.equals(null) && (!cadComercial.equals(null) && (!cadResidencial.equals(null) && (!cadDatNasc.equals(null))))))))) {
-/*
-                  CadastroActivity.NetworkCall myCall = new NetworkCall();
-
-                  myCall.execute("http://deltaws.azurewebsites.net/g2/rest/cliente/" + nome + "/" + cpf + "/" + email + "/" + senha + "/" + celular + "/" + telComercial + "/" + telResidencial + "/" + dataNac);
-*/
-                }
 
             }
         });
