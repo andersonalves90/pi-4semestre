@@ -60,12 +60,23 @@
 
 
     <TextView
+        android:id="@+id/sobDescricao"
         android:text="Lorem ipsum dolor sit amet, eam ut dignissim democritum vituperata. Duo affert iudicabit incorrupte no, ad pro falli veniam, assentior appellantur cu has. Vix iuvaret suscipit reformidans ea, vis ad alia possim alienum. Agam legimus ius ea, usu admodum gloriatur eu, ut ubique voluptua nam. An mel copiosae praesent dignissim. Qui stet tamquam eligendi cu, munere libris ne ius, vel tale quaerendum ut. "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/sobDescricao"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="27dp" />
+        android:layout_centerHorizontal="true"
+        android:text="App criado para o Projeto Integrador do Senac" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WJumpers develop"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/sobTitle"
+        android:layout_alignBottom="@+id/sobTitle"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>
