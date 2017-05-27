@@ -75,7 +75,6 @@ public class CadastroActivity extends AppCompatActivity {
         cadOpcao = (CheckBox) findViewById(R.id.cadOpcao);
         cadBtnCadastrar = (Button) findViewById(R.id.cadBtnCadastrar);
 
-
         cadBtnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,7 +144,6 @@ public class CadastroActivity extends AppCompatActivity {
                 }
                 String dataNacCusto = dataFormatada.replaceAll("[^0-9]+","");
                 cliente.setDtNascCliente(dataNacCusto);
-
 
                 try {
                     jsonCliente.put("nomeCompletoCliente",cliente.getNomeCompletoCliente());
@@ -229,7 +227,6 @@ public class CadastroActivity extends AppCompatActivity {
                 Snackbar snackbar = Snackbar
                         .make(cadBtnCadastrar, "Valor " + result, Snackbar.LENGTH_LONG);
                 snackbar.show();
-
 
             } catch (Exception e) {
                 e.printStackTrace();
