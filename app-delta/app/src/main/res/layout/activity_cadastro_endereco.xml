@@ -13,7 +13,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="CEP"
         android:ems="10"
         android:layout_alignParentTop="true"
@@ -44,17 +44,17 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Estado"
+        android:inputType="textPostalAddress"
+        android:hint="País"
         android:ems="10"
-        android:id="@+id/cedEstado"
+        android:id="@+id/cedPais"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/cedBairro" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Nº"
         android:ems="10"
         android:id="@+id/cedNumero"
@@ -64,11 +64,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textPostalAddress"
         android:hint="Bairro"
         android:ems="10"
         android:id="@+id/cedBairro"
-        android:layout_above="@+id/cedEstado"
+        android:layout_above="@+id/cedPais"
         android:layout_alignStart="@+id/cedNumero" />
 
     <EditText
@@ -85,7 +85,7 @@
         android:text="Cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cedEstado"
+        android:layout_below="@+id/cedPais"
         android:layout_marginTop="32dp"
         android:id="@+id/cedBtnCadastrar"
         android:layout_alignParentEnd="true"
@@ -94,7 +94,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textPostalAddress"
         android:hint="Cidade"
         android:ems="10"
         android:id="@+id/cedCidade"

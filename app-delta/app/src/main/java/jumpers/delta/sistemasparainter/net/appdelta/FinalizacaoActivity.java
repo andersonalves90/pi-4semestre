@@ -9,16 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FinalizacaoActivity extends AppCompatActivity {
-    Button finVoltarLoja;
-    ImageView finImageP;
-    ImageView finImagePt;
-    TextView finProdutoP;
-    TextView finProdutoPt;
-    TextView finPrecoP;
-    TextView finPrecoPt;
-    TextView finTotal;
-    TextView finPagamento;
-    TextView finXx;
+    private Button finVoltarLoja;
+    private ImageView finImageP;
+    private ImageView finImagePt;
+    private TextView finProdutoP;
+    private TextView finProdutoPt;
+    private TextView finPrecoP;
+    private TextView finPrecoPt;
+    private TextView finTotal;
+    private TextView finPagamento;
+    private TextView finXx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

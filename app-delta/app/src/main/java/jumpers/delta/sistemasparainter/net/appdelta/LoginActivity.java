@@ -1,7 +1,9 @@
 package jumpers.delta.sistemasparainter.net.appdelta;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,44 +27,47 @@ import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView logLogin;
-    EditText logEmail = null;
-    EditText logSenha = null;
-    Button logEntra;
-
+    public static final String PREFS_NAME = "Preferences";
+    private ProgressDialog dialog;
+    private TextView logLogin;
+    private EditText logEmail = null;
+    private EditText logSenha = null;
+    private Button logEntra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         logLogin = (TextView) findViewById(R.id.logLogin);
-        logEmail = (EditText) findViewById(R.id.logEmail);
-        logSenha = (EditText) findViewById(R.id.logSenha);
-        logEntra = (Button) findViewById(R.id.logEntrar);
+            logEmail = (EditText) findViewById(R.id.logEmail);
+            logSenha = (EditText) findViewById(R.id.logSenha);
+            logEntra = (Button) findViewById(R.id.logEntrar);
 
         logEntra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(LoginActivity.this,ProdutoActivity.class);
-                //startActivity(intent);
 
                 String email = logEmail.getText().toString();
                 String senha = logSenha.getText().toString();
 
-                if (logEmail.equals("")) {
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                logEmail.setText(settings.getString("LogEmail", "email"));
+
+                if (email.equals("")) {
                     logEmail.setError("campo obrigatório");
                     return;
                 }
-                if (logSenha.equals("")) {
+                if (senha.equals("")) {
                     logSenha.setError("campo obrigatório");
                     return;
                 }
-                if ((!logEmail.equals(null)) && (!logSenha.equals(null))) {
-
                     NetworkCall myCall = new NetworkCall();
 
                   myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
-                }
+
+                dialog = ProgressDialog.show(LoginActivity.this,"","Logando...", false,true);
+                dialog.setIcon(R.drawable.ic_launcher);
+                dialog.setCancelable(false);
 
             }
         });
@@ -110,20 +117,33 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 if (result.equals("true")) {
+
+                    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString("email", logEmail.getText().toString());
+                    //Confirma a gravação dos dados
+                    editor.commit();
+
                     Intent intent = new Intent(LoginActivity.this, ProdutoActivity.class);
                     startActivity(intent);
 
-
                 } else {
-                    Snackbar snackbar = Snackbar
-                            .make(logEntra, "Usuário ou senha incorretos", Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                    AlertDialog.Builder builder = new
+                            AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage("Você não está cadastrado!");
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                    Intent intent = new Intent(LoginActivity.this,CadastroActivity.class);
+                    startActivity(intent);
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
 
     }
 }
+
