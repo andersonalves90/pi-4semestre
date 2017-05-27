@@ -18,6 +18,8 @@ public class Produto {
     private int qtdMinEstoque;
     private byte imagem[];
 
+
+
     public int getIdProduto() {
         return idProduto;
     }

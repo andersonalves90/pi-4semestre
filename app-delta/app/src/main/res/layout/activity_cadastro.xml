@@ -34,10 +34,20 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="CPF"
+        android:ems="10"
+        android:id="@+id/cadCpf"
+        android:layout_below="@+id/cadNome"
+        android:layout_alignStart="@+id/cadNome" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:layout_below="@+id/cadNome"
-        android:layout_alignStart="@+id/cadNome"
+        android:layout_below="@+id/cadCpf"
+        android:layout_alignStart="@+id/cadCpf"
         android:hint="E-mail"
         android:id="@+id/cadEmail" />
 
@@ -51,24 +61,13 @@
         android:hint="Senha"
         android:id="@+id/cadSenha" />
 
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="CPF"
         android:ems="10"
-        android:id="@+id/cadCpf"
         android:layout_below="@+id/cadSenha"
-        android:layout_alignStart="@+id/cadSenha" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_below="@+id/cadCpf"
-        android:layout_alignStart="@+id/cadCpf"
+        android:layout_alignStart="@+id/cadSenha"
         android:hint="Celular"
         android:id="@+id/cadCelular" />
 
@@ -99,25 +98,22 @@
         android:layout_alignStart="@+id/cadResidencial"
         android:hint="Data de Nascimento"
         android:id="@+id/cadDatNasc" />
-    <CheckBox
-        android:id="@+id/cadOpcao"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="date"
         android:ems="10"
-        android:layout_below="@+id/cadResidencial"
+        android:layout_below="@+id/cadDatNasc"
         android:layout_alignStart="@+id/cadDatNasc"
-        android:layout_marginTop="40dp"
-        android:text="Aceita receber NewLestter" />
-
+        android:hint="Data de Nascimento"
+        android:id="@+id/cadRecNlett" />
     <Button
         android:text="Cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cadOpcao"
-        android:layout_marginTop="05dp"
+        android:layout_below="@+id/cadRecNlett"
+        android:layout_marginTop="20dp"
         android:id="@+id/cadBtnCadastrar"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
-
-
 </RelativeLayout>

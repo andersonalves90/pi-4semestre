@@ -1,12 +1,14 @@
 package jumpers.delta.sistemasparainter.net.appdelta;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ProdutoActivity extends AppCompatActivity {
+public class ProdutoActivity extends android.support.v4.app.Fragment {
     private ImageView proImagemP;
     private TextView proPrecoA;
     private TextView proPrecoD;
@@ -15,14 +17,15 @@ public class ProdutoActivity extends AppCompatActivity {
     private Button proBtnComprar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_produto);
-        proImagemP=(ImageView) findViewById(R.id.proImagemP);
-        proPrecoA=(TextView) findViewById(R.id.proPrecoA);
-        proPrecoD=(TextView) findViewById(R.id.proPrecoD);
-        proNomeProduto=(TextView) findViewById(R.id.proNomeProduto);
-        proDescrição=(TextView) findViewById(R.id.proDescrição);
-        proBtnComprar=(Button) findViewById(R.id.proBtnComprar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_produto, container, false);
+        proImagemP=(ImageView) view.findViewById(R.id.proImagemP);
+        proPrecoA=(TextView) view.findViewById(R.id.proPrecoA);
+        proPrecoD=(TextView) view.findViewById(R.id.proPrecoD);
+        proNomeProduto=(TextView) view.findViewById(R.id.proNomeProduto);
+        proDescrição=(TextView) view.findViewById(R.id.proDescrição);
+        proBtnComprar=(Button) view.findViewById(R.id.proBtnComprar);
+
+        return view;
     }
 }
