@@ -24,6 +24,7 @@ public class Sobre extends android.support.v4.app.Fragment {
         sobIntegranteB=(ImageView) view.findViewById(R.id.sobIntegranteB);
         sobNomeB=(TextView) view.findViewById(R.id.sobNomeB);
         sobDescricao=(TextView) view.findViewById(R.id.sobDescricao);
+        //teste
 
         return view;
     }
