@@ -3,7 +3,7 @@
     package="jumpers.delta.sistemasparainter.net.appdelta">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -12,8 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="jumpers.delta.sistemasparainter.net.appdelta.LoginActivity">
-
-
 
         </activity>
         <activity android:name=".CadastroActivity">

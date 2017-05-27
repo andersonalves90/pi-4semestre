@@ -14,9 +14,9 @@ import jumpers.delta.sistemasparainter.net.appdelta.entities.Produto;
 
 
 public class MainActivity extends AppCompatActivity {
-        ImageView maiImageP;
-        TextView maiProduto;
-        Button maiEntrar;
+        private ImageView maiImageP;
+        private TextView maiProduto;
+        private Button maiEntrar;
         private SharedPreferences prefs;
     @Override
     // home

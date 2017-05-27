@@ -29,11 +29,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String PREFS_NAME = "Preferences";
     private ProgressDialog dialog;
-    TextView logLogin;
-    EditText logEmail = null;
-    EditText logSenha = null;
-    Button logEntra;
-
+    private TextView logLogin;
+    private EditText logEmail = null;
+    private EditText logSenha = null;
+    private Button logEntra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +43,13 @@ public class LoginActivity extends AppCompatActivity {
             logSenha = (EditText) findViewById(R.id.logSenha);
             logEntra = (Button) findViewById(R.id.logEntrar);
 
-
-
-
         logEntra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 String email = logEmail.getText().toString();
                 String senha = logSenha.getText().toString();
 
-                //Restaura as preferencias gravadas
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 logEmail.setText(settings.getString("LogEmail", "email"));
 
@@ -120,7 +114,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
 
             try {
                 if (result.equals("true")) {
