@@ -29,9 +29,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String PREFS_NAME = "Preferences";
     private ProgressDialog dialog;
-    TextView logLogin;
-    EditText logEmail = null;
-    EditText logSenha = null;
+    private TextView logLogin;
+    private EditText logEmail = null;
+    private EditText logSenha = null;
     Button logEntra;
 
 
