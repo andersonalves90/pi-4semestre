@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 //pagina indo para produto add o produto;
                 Produto produto = new Produto();
 
-
+//eliana
                 CarrinhoSingleton.getInstance().getProdutosNoCarrinho().add(produto);
                 startActivity(intent);
 
