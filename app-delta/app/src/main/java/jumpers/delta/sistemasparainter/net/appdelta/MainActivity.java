@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView maiProduto;
     private Button maiEntrar;
     private SharedPreferences prefs;
+
     @Override
     // home
     protected void onCreate(Bundle savedInstanceState) {

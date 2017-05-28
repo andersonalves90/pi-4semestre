@@ -8,6 +8,7 @@ Projeto Android - PI 4° Semestre
 Branchs:
 - Develop
 - Master
+- WS
 
 Utilizar o branch Develop para trabalhar em todos os projetos.
 
