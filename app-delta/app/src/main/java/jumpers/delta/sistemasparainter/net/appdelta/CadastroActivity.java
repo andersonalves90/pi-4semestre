@@ -35,18 +35,18 @@ import jumpers.delta.sistemasparainter.net.appdelta.entities.Mask;
 
 public class CadastroActivity extends AppCompatActivity {
     private ProgressDialog dialog;
-    JSONObject jsonCliente =new JSONObject();
-    TextView cadCadastro;
-    EditText cadNome = null;
-    EditText cadEmail = null;
-    EditText cadSenha = null;
-    EditText cadCpf = null;
-    EditText cadCelular;
-    EditText cadComercial;
-    EditText cadResidencial;
-    EditText cadDatNasc;
-    CheckBox cadOpcao;
-    Button cadBtnCadastrar ;
+    private JSONObject jsonCliente =new JSONObject();
+    private TextView cadCadastro;
+    private EditText cadNome = null;
+    private EditText cadEmail = null;
+    private EditText cadSenha = null;
+    private EditText cadCpf = null;
+    private EditText cadCelular;
+    private EditText cadComercial;
+    private EditText cadResidencial;
+    private EditText cadDatNasc;
+    private CheckBox cadOpcao;
+    private Button cadBtnCadastrar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,16 +123,16 @@ public class CadastroActivity extends AppCompatActivity {
                 }else{
                     cliente.setRecebeNewsLetter("0");
                 }
-                    String celularCusto = celular.replaceAll("[^0-9]+","");
-                    cliente.setCelularCliente(celularCusto);
+                String celularCusto = celular.replaceAll("[^0-9]+","");
+                cliente.setCelularCliente(celularCusto);
 
-                    String telComercialCusto = telComercial.replaceAll("[^0-9]+","");
-                    cliente.setTelComercialCliente(telComercialCusto);
+                String telComercialCusto = telComercial.replaceAll("[^0-9]+","");
+                cliente.setTelComercialCliente(telComercialCusto);
 
-                    String telResidencialCusto =telResidencial.replaceAll("[^0-9]+","");
-                    cliente.setTelResidencialCliente(telResidencialCusto);
+                String telResidencialCusto =telResidencial.replaceAll("[^0-9]+","");
+                cliente.setTelResidencialCliente(telResidencialCusto);
 
-                    cliente.setRecebeNewsLetter(newLesttter);
+                cliente.setRecebeNewsLetter(newLesttter);
 
                 try {
                     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -144,7 +144,7 @@ public class CadastroActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 String dataNacCusto = dataFormatada.replaceAll("[^0-9]+","");
-                    cliente.setDtNascCliente(dataNacCusto);
+                cliente.setDtNascCliente(dataNacCusto);
 
 
                 try {
@@ -161,7 +161,7 @@ public class CadastroActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-               NetworkCall myCall = new NetworkCall();
+                NetworkCall myCall = new NetworkCall();
                 myCall.execute((String)null);
                 String parametro = null;
 
@@ -176,7 +176,6 @@ public class CadastroActivity extends AppCompatActivity {
 
     public class NetworkCall extends AsyncTask<String, Void, String> {
 
-        // Esse é o método que executa a tarefa em segundo plano
         @Override
         protected String doInBackground(String... params) {
 
@@ -227,9 +226,9 @@ public class CadastroActivity extends AppCompatActivity {
 
             try {
 
-                    Snackbar snackbar = Snackbar
-                            .make(cadBtnCadastrar, "Valor " + result, Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                Snackbar snackbar = Snackbar
+                        .make(cadBtnCadastrar, "Valor " + result, Snackbar.LENGTH_LONG);
+                snackbar.show();
 
 
             } catch (Exception e) {
@@ -240,9 +239,4 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
 

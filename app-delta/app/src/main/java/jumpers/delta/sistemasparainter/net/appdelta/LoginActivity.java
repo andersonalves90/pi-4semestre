@@ -32,30 +32,24 @@ public class LoginActivity extends AppCompatActivity {
     private TextView logLogin;
     private EditText logEmail = null;
     private EditText logSenha = null;
-    Button logEntra;
-
+    private Button logEntra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         logLogin = (TextView) findViewById(R.id.logLogin);
-            logEmail = (EditText) findViewById(R.id.logEmail);
-            logSenha = (EditText) findViewById(R.id.logSenha);
-            logEntra = (Button) findViewById(R.id.logEntrar);
-
-
-
+        logEmail = (EditText) findViewById(R.id.logEmail);
+        logSenha = (EditText) findViewById(R.id.logSenha);
+        logEntra = (Button) findViewById(R.id.logEntrar);
 
         logEntra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 String email = logEmail.getText().toString();
                 String senha = logSenha.getText().toString();
 
-                //Restaura as preferencias gravadas
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 logEmail.setText(settings.getString("LogEmail", "email"));
 
@@ -67,9 +61,9 @@ public class LoginActivity extends AppCompatActivity {
                     logSenha.setError("campo obrigatório");
                     return;
                 }
-                    NetworkCall myCall = new NetworkCall();
+                NetworkCall myCall = new NetworkCall();
 
-                  myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
+                myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
 
                 dialog = ProgressDialog.show(LoginActivity.this,"","Logando...", false,true);
                 dialog.setIcon(R.drawable.ic_launcher);
@@ -120,7 +114,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
 
             try {
                 if (result.equals("true")) {
