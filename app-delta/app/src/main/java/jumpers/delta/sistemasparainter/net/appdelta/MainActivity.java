@@ -14,11 +14,10 @@ import jumpers.delta.sistemasparainter.net.appdelta.entities.Produto;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView maiImageP;
-    private TextView maiProduto;
-    private Button maiEntrar;
-    private SharedPreferences prefs;
-
+        private ImageView maiImageP;
+        private TextView maiProduto;
+        private Button maiEntrar;
+        private SharedPreferences prefs;
     @Override
     // home
     protected void onCreate(Bundle savedInstanceState) {

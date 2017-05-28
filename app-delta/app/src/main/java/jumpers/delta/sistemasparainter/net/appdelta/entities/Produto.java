@@ -9,11 +9,11 @@ import java.math.BigDecimal;
 public class Produto {
     private int idProduto;
     private String nomeProduto;
-    private String descProduto;
+    private BigDecimal descProduto;
     private BigDecimal precProduto;
-    private BigDecimal descontoPromocao;
+    private BigDecimal descPromocao;
     private int idCategoria;
-    private String ativoProduto;
+    private int ativoProduto;
     private int idUsuario;
     private int qtdMinEstoque;
     private byte imagem[];
@@ -34,11 +34,11 @@ public class Produto {
         this.nomeProduto = nomeProduto;
     }
 
-    public String getDescProduto() {
+    public BigDecimal getDescProduto() {
         return descProduto;
     }
 
-    public void setDescProduto(String descProduto) {
+    public void setDescProduto(BigDecimal descProduto) {
         this.descProduto = descProduto;
     }
 
@@ -50,12 +50,12 @@ public class Produto {
         this.precProduto = precProduto;
     }
 
-    public BigDecimal getDescontoPromocao() {
-        return descontoPromocao;
+    public BigDecimal getDescPromocao() {
+        return descPromocao;
     }
 
-    public void setDescontoPromocao(BigDecimal descontoPromocao) {
-        this.descontoPromocao = descontoPromocao;
+    public void setDescPromocao(BigDecimal descPromocao) {
+        this.descPromocao = descPromocao;
     }
 
     public int getIdCategoria() {
@@ -66,11 +66,11 @@ public class Produto {
         this.idCategoria = idCategoria;
     }
 
-    public String getAtivoProduto() {
+    public int getAtivoProduto() {
         return ativoProduto;
     }
 
-    public void setAtivoProduto(String ativoProduto) {
+    public void setAtivoProduto(int ativoProduto) {
         this.ativoProduto = ativoProduto;
     }
 
@@ -89,7 +89,6 @@ public class Produto {
     public void setQtdMinEstoque(int qtdMinEstoque) {
         this.qtdMinEstoque = qtdMinEstoque;
     }
-
     public byte[] getImagem() {
         return imagem;
     }

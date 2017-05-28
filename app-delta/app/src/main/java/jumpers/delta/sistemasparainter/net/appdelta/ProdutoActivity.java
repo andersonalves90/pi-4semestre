@@ -1,10 +1,10 @@
 package jumpers.delta.sistemasparainter.net.appdelta;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.widget.Button;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
 public class ProdutoActivity extends AppCompatActivity {
     private ImageView proImagemP;
