@@ -26,6 +26,11 @@
             android:checked="false"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="Carrinho"/>
+        <item
+            android:id="@+id/sair"
+            android:checked="false"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="Sair"/>
 
 
     </group>

@@ -33,21 +33,32 @@ public class MenuActivity extends AppCompatActivity{
                 if (menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
-                if (menuItem.getItemId() == R.id.sobre) {
+                if (menuItem.getItemId() == R.id.home) {
+                    MainActivity mainActivity = new MainActivity();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,mainActivity ).commit();
+                    return true;
+                }else  if (menuItem.getItemId() == R.id.sobre) {
                     Sobre fragment = new Sobre();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragment).commit();
                     return true;
-                }else if (menuItem.getItemId() == R.id.home) {
-                    MainActivity mainActivity = new MainActivity();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,mainActivity ).commit();
+                }else  if (menuItem.getItemId() == R.id.categorias) {
+                    Categoria categoria = new Categoria ();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, categoria).commit();
+                    return true;
+                }else  if (menuItem.getItemId() == R.id.qr_code) {
+                    QRCode  qrcode= new QRCode();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, qrcode).commit();
                     return true;
 
                 }else if (menuItem.getItemId() == R.id.carrinho) {
                     CarrinhoActivity fragment = new CarrinhoActivity();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragment).commit();
                     return true;
-                }
 
+            }else if (menuItem.getItemId() == R.id.sair) {
+          finish();
+
+            }
                 return false;
             }
         });
