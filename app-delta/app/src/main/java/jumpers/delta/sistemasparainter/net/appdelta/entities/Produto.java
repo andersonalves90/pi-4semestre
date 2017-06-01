@@ -11,6 +11,11 @@ public class Produto {
     private String nomeProduto;
     private BigDecimal descProduto;
     private BigDecimal precProduto;
+
+    public void setPrecProduto(BigDecimal precProduto) {
+        this.precProduto = precProduto;
+    }
+
     private BigDecimal descPromocao;
     private int idCategoria;
     private int ativoProduto;
@@ -46,9 +51,6 @@ public class Produto {
         return precProduto;
     }
 
-    public void setPrecProduto(BigDecimal precProduto) {
-        this.precProduto = precProduto;
-    }
 
     public BigDecimal getDescPromocao() {
         return descPromocao;

@@ -2,9 +2,15 @@ package jumpers.delta.sistemasparainter.net.appdelta;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.icu.math.BigDecimal;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +20,11 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -24,7 +35,6 @@ import java.net.URL;
 
 import jumpers.delta.sistemasparainter.net.appdelta.entities.CarrinhoSingleton;
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Produto;
-
 
 
 public class MainActivity extends  android.support.v4.app.Fragment {
@@ -38,45 +48,27 @@ public class MainActivity extends  android.support.v4.app.Fragment {
     private Spinner spinner;
     private Button maiEntrar;
     private ViewGroup produtos;
+    private JSONObject jsonProduto = new JSONObject();
+    private String nome;
+    private int categoria;
+    private BigDecimal preco;
+
+    Produto produto = new Produto();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main,
                 container, false);
-        // produtos = (ViewGroup) view.findViewById(R.id.container);
+        produtos = (ViewGroup) view.findViewById(R.id.container);
+
+
+
+        NetworkCall myCall = new NetworkCall();
+        myCall.execute("http://deltaws.azurewebsites.net/g2/rest/produto");
 
         return view;
     }
-    /*
-public  void additem(){
-    CardView cardView = (CardView) LayoutInflater.from(this).inflate(R.layout.activity_cardview, produtos, false);
-    EditText maiProduto = (EditText) cardView.findViewById(R.id.maiProduto);
-    EditText maiPrecoProduto = (EditText) cardView.findViewById(R.id.maiPrecoProduto);
-    EditText maiPromoProduto = (EditText) cardView.findViewById(R.id.maiPromoProduto);
-    EditText maiDescProduto = (EditText) cardView.findViewById(R.id.maiDescProduto);
-    TextView maiQuantidade = (TextView) cardView.findViewById(R.id.maiQuantidade);
-    Spinner spinner = (Spinner) cardView.findViewById(R.id.spinner);
-    Button maiEntrar = (Button) cardView.findViewById(R.id.maiEntrar);
-    Produto produto = new Produto();
-
-
-   // produto.setNomeProduto();
-    maiPrecoProduto.setText((CharSequence) produto);
-    maiPromoProduto.setText((CharSequence) produto);
-    maiDescProduto.setText((CharSequence) produto);
-    maiQuantidade.setText((CharSequence) produto);
-    produtos.addView(cardView);
-
-
-    NetworkCall myCall = new NetworkCall();
-}
-
-        /*
-
-        addItem("https://upload.wikimedia.org/wikipedia/commons/5/54/Europa-moon.jpg");
-        addItem("https://upload.wikimedia.org/wikipedia/commons/5/54/Europa-moon.jpg");
-        */
 
 
     public class NetworkCall extends AsyncTask<String, Void, String> {
@@ -123,41 +115,50 @@ public  void additem(){
 
             try {
                 // Cria um objeto JSON a partir da resposta
-                JSONObject json = new JSONObject(result);
+                JSONArray json = new JSONArray(result);
+                for (int i=0; i<5; i+=1) {
+                    Log.d ("produto",json.get(i).toString());
 
-                // Verifica o tipo de operação e pega o dado correspondente do JSON
-                String finalResult = "";
+                    JSONObject obj = (JSONObject)json.get(i);
+
+                   // produto.getIdProduto(obj.get("idProduto")
+                 //   produto.setNomeProduto(obj.get("nomeProduto").toString());
+                   // String obj;
+
+                   // produto.setImagem(obj.get("imagem"));
+
+                //    Base64.encodeBase64String(StringUtils.getBytesUtf8(s));
 
 
-      /*          Intent intent = new Intent(MainActivity.this,CarrinhoActivity.class);
-                intent.putExtra("nomeProduto", json.getString("nome"));
-                intent.putExtra("descProduto", json.getString("descricao"));
-                intent.putExtra("precProduto", json.getString("preco"));
-                intent.putExtra("descontoPromocao", json.getString("desconto"));
-                intent.putExtra("idCategoria", json.getString("categoria"));
-                intent.putExtra("ativoProduto", json.getString("bolean"));
-                intent.putExtra("idUsuario", json.getString("id"));
-                intent.putExtra("qtdMinEstoque", json.getString("qtd"));
-                intent.putExtra("imagem", json.getString("imagem"));
-                startActivity(intent);
-                finish();
-*/
+                    CardView cardView = (CardView) LayoutInflater.from(MainActivity.this.getContext()).inflate(R.layout.activity_cardview, produtos, false);
+                    ImageView maiImageP = (ImageView) cardView.findViewById(R.id.maiImageP);
+                    byte[] imageAsBytes = Base64.decode(get().getBytes(), Base64.DEFAULT);
+                    Bitmap imageBitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+                    maiImageP.setImageBitmap(imageBitmap);
+
+                    maiImageP.setImageResource(produto.getImagem().Bytes[]);
+                    EditText nome = (EditText) cardView.findViewById(R.id.maiProduto);
+                    nome.setText(produto.getNomeProduto().toString());
+                    EditText preco = (EditText) cardView.findViewById(R.id.maiPrecoProduto);
+                    preco.setText(obj.get("precProduto").toString());
+                    EditText categoria = (EditText) cardView.findViewById(R.id.maiDescProduto);
+                   categoria.setText(obj.get("idCategoria").toString());
+                    Button maiEntrar = (Button) cardView.findViewById(R.id.maiEntrar);
+
+                    MainActivity.this.produtos.addView(cardView);
+
+
+                 //   Intent intent = new Intent(MainActivity.this, Detalhes.class);
+
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
 
     }
 }
-
-    /*
-    private void addItem(String url) {
-        ImageView maiImageP = (ImageView) cardView.findViewById(R.id.maiImageP);
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(this));
-        imageLoader.displayImage(url, maiImageP);
-        produtos.addView(cardView);
-*/
 
 

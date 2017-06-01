@@ -1,5 +1,6 @@
 package jumpers.delta.sistemasparainter.net.appdelta;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -24,9 +25,6 @@ public class MenuActivity extends AppCompatActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navegar);
 
-
-
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -36,7 +34,9 @@ public class MenuActivity extends AppCompatActivity{
                 if (menuItem.getItemId() == R.id.home) {
                     MainActivity mainActivity = new MainActivity();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,mainActivity ).commit();
+
                     return true;
+
                 }else  if (menuItem.getItemId() == R.id.sobre) {
                     Sobre fragment = new Sobre();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragment).commit();
@@ -45,10 +45,11 @@ public class MenuActivity extends AppCompatActivity{
                     Categoria categoria = new Categoria ();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, categoria).commit();
                     return true;
+
                 }else  if (menuItem.getItemId() == R.id.qr_code) {
-                    QRCode  qrcode= new QRCode();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, qrcode).commit();
-                    return true;
+                    //QRCode  qrcode= new QRCode();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, qrcode).commit();
+                    //return true;
 
                 }else if (menuItem.getItemId() == R.id.carrinho) {
                     CarrinhoActivity fragment = new CarrinhoActivity();
@@ -64,10 +65,10 @@ public class MenuActivity extends AppCompatActivity{
         });
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.string.navigation_drawer_open,R.string.navigation_drawer_close) {};
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close) {};
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
     }
 
     @Override
@@ -77,4 +78,5 @@ public class MenuActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
