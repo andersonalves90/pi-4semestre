@@ -15,17 +15,19 @@ import jumpers.delta.sistemasparainter.net.appdelta.entities.Endereco;
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Mask;
 
 public class CadastroEnderecoActivity extends AppCompatActivity {
+
     private ProgressDialog dialog;
     private TextView cedCadastro;
     private EditText cedBairro;
     private EditText cedLogradouro;
     private EditText cedNumero;
     private EditText cedCep;
-    private EditText cedComplemento=null;
+    private EditText cedComplemento = null;
     private EditText cedCidade;
-    private EditText cedPais=null;
-    private EditText cedUf=null;
+    private EditText cedPais = null;
+    private EditText cedUf = null;
     private Button cedBtnCadastrar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
