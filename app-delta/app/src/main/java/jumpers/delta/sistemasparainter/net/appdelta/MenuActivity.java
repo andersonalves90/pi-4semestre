@@ -50,7 +50,7 @@ public class MenuActivity extends AppCompatActivity{
                     return true;
 
                 }else if (menuItem.getItemId() == R.id.carrinho) {
-                    CarrinhoActivity fragment = new CarrinhoActivity();
+                    Carrinho fragment = new Carrinho();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragment).commit();
                     return true;
 
