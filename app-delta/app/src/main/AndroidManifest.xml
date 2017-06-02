@@ -13,8 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name="jumpers.delta.sistemasparainter.net.appdelta.LoginActivity">
 
-        </activity>
-
+        </activity
 
         <activity android:name=".MenuActivity">
             <intent-filter>

@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.icu.math.BigDecimal;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Base64;
+import android.util.JsonWriter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -65,7 +67,7 @@ public class MainActivity extends  android.support.v4.app.Fragment {
 
 
         NetworkCall myCall = new NetworkCall();
-        myCall.execute("http://deltaws.azurewebsites.net/g2/rest/produto");
+        myCall.execute("http://deltaws.azurewebsites.net/g2/rest/produto/1");
 
         return view;
     }
@@ -112,7 +114,7 @@ public class MainActivity extends  android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
+            result = "["+result+"]";
             try {
                 // Cria um objeto JSON a partir da resposta
                 JSONArray json = new JSONArray(result);
@@ -121,34 +123,44 @@ public class MainActivity extends  android.support.v4.app.Fragment {
 
                     JSONObject obj = (JSONObject)json.get(i);
 
-                   // produto.getIdProduto(obj.get("idProduto")
-                 //   produto.setNomeProduto(obj.get("nomeProduto").toString());
-                   // String obj;
-
-                   // produto.setImagem(obj.get("imagem"));
-
-                //    Base64.encodeBase64String(StringUtils.getBytesUtf8(s));
-
-
                     CardView cardView = (CardView) LayoutInflater.from(MainActivity.this.getContext()).inflate(R.layout.activity_cardview, produtos, false);
-                    ImageView maiImageP = (ImageView) cardView.findViewById(R.id.maiImageP);
-                    byte[] imageAsBytes = Base64.decode(get().getBytes(), Base64.DEFAULT);
-                    Bitmap imageBitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+                   ImageView maiImageP = (ImageView) cardView.findViewById(R.id.maiImageP);
+
+                    String imageString = obj.get("imagem").toString();
+
+                  byte[] imageAsBytes = Base64.decode(imageString, Base64.DEFAULT);
+                   Bitmap imageBitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
                     maiImageP.setImageBitmap(imageBitmap);
 
-                    maiImageP.setImageResource(produto.getImagem().Bytes[]);
+                    produto.setImagem(imageAsBytes);
+
+                    String precoString = obj.get("precProduto").toString();
+                    BigDecimal precoBigDecimal = new BigDecimal(precoString);
+                   produto.setPrecProduto(precoBigDecimal);
+
+                    String idString = obj.get("idProduto").toString();
+                    Integer idProduto = Integer.parseInt(idString);
+                   produto.setIdProduto(idProduto);
+
+                    produto.setNomeProduto(obj.get("nomeProduto").toString());
+
+
+                    String preco = obj.getString("precProduto");
+
+
                     EditText nome = (EditText) cardView.findViewById(R.id.maiProduto);
-                    nome.setText(produto.getNomeProduto().toString());
-                    EditText preco = (EditText) cardView.findViewById(R.id.maiPrecoProduto);
-                    preco.setText(obj.get("precProduto").toString());
+                    nome.setText(obj.get("nomeProduto").toString());
+                 //   nome.setText(produto.getNomeProduto().toString());
+                    EditText precoText = (EditText) cardView.findViewById(R.id.maiPrecoProduto);
+                 //   preco.setText(produto.getPrecProduto().toString());
+                    precoText.setText(obj.get("precProduto").toString());
                     EditText categoria = (EditText) cardView.findViewById(R.id.maiDescProduto);
                    categoria.setText(obj.get("idCategoria").toString());
                     Button maiEntrar = (Button) cardView.findViewById(R.id.maiEntrar);
 
                     MainActivity.this.produtos.addView(cardView);
+maiEntrar.setOnClickListener(new View(o));
 
-
-                 //   Intent intent = new Intent(MainActivity.this, Detalhes.class);
 
                 }
 
@@ -157,6 +169,7 @@ public class MainActivity extends  android.support.v4.app.Fragment {
             }
 
         }
+
 
     }
 }

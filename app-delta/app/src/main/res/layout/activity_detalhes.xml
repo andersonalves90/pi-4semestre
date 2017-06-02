@@ -1,29 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    tools:context="jumpers.delta.sistemasparainter.net.appdelta.MainActivity">
+
+    <EditText
+        android:id="@+id/maiProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maiCategoriaProduto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
+        android:text=" Nome Produto"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/maiImageP"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/maiProduto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@android:drawable/presence_offline" />
+
+    <EditText
+        android:id="@+id/maiPrecoProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maiImageP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:inputType="numberDecimal"
+        android:text=" Preço"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/maiPrecoPromocao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maiImageP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:inputType="numberDecimal"
+        android:text=" Desconto"
+        android:textSize="12sp" />
+
+
+    <EditText
+        android:id="@+id/maiDescProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maiPrecoPromocao"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:inputType="numberDecimal"
+        android:text=" Categoria"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/quant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maiDescProduto"
+        android:layout_centerHorizontal="true"
+       android:layout_marginTop="10dp"
+        android:text="Quantidade"
+        android:textSize="12sp" />
+
+
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/quant"
+
+        />
+
+
+    <Button
+        android:id="@+id/maiEntrar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="jumpers.delta.sistemasparainter.net.appdelta.MainActivity">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="11dp">
-
-            <LinearLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            </LinearLayout>
-        </ScrollView>
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maiProduto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Comprar"
+        android:textSize="20sp" />
 </LinearLayout>

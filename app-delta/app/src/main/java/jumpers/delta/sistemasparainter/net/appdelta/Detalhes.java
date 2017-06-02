@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class Detalhes extends  android.support.v4.app.Fragment {
     private EditText maiPromoProduto;
     private EditText maiDescProduto;
     private TextView maiQuantidade;
-    private Spinner spinner;
+   private NumberPicker numberPicker;
     private Button maiEntrar;
     private ViewGroup produtos;
     @Override

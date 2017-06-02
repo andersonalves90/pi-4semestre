@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:myapp="http://schemas.android.com/tools">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"
-            android:checked="false"
-            android:icon="@android:drawable/ic_menu_preferences"
-            android:title="Home"/>
+            android:title="Home"
+            android:icon="@drawable/homeicon"
+            app:showAsAction="always"/>
         <item
             android:id="@+id/sobre"
-            android:checked="false"
-            android:icon="@android:drawable/ic_menu_preferences"
             android:title="Sobre"/>
         <item
-            android:id="@+id/categorias"
-            android:checked="false"
-            android:icon="@android:drawable/ic_menu_preferences"
-            android:title="Categorias"/>
-        <item
             android:id="@+id/qr_code"
-            android:checked="false"
-            android:icon="@android:drawable/ic_menu_preferences"
             android:title="QR Code"/>
         <item
             android:id="@+id/carrinho"
-            android:checked="false"
-            android:icon="@android:drawable/ic_menu_preferences"
             android:title="Carrinho"/>
         <item
             android:id="@+id/sair"
-            android:checked="false"
-            android:icon="@android:drawable/ic_menu_preferences"
             android:title="Sair"/>
-
-
     </group>
+
 </menu>
