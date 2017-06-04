@@ -122,7 +122,7 @@ public class MainActivity extends  android.support.v4.app.Fragment {
                     maiImageP.setImageBitmap(imageBitmap);
                     produto.setImagem(imageAsBytes);
 
-                    String idString = obj.get("idProduto").toString();
+                    final String idString = obj.get("idProduto").toString();
                     Integer idProduto = Integer.parseInt(idString);
                     produto.setIdProduto(idProduto);
 
@@ -137,6 +137,16 @@ public class MainActivity extends  android.support.v4.app.Fragment {
                     produto.setIdCategoria(idCategoria);
                     Button maiEntrar = (Button) cardView.findViewById(R.id.maiEntrar);
                     MainActivity.this.produtos.addView(cardView);
+                    //enviando o id do produto para detalhe
+                    maiEntrar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Intent intent = new Intent(MainActivity.this.getContext(),DetalheActivity.class);
+                            intent.putExtra("id",idString);
+                            startActivity(intent);
+                        }
+                    });
 
                 }
 

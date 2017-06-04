@@ -7,7 +7,7 @@ package="jumpers.delta.sistemasparainter.net.appdelta">
 <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
     android:supportsRtl="true" android:theme="@style/AppTheme">
 
-    <activity android:name=".CadastroActivity">
+    <activity android:name=".LoginActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -15,7 +15,20 @@ package="jumpers.delta.sistemasparainter.net.appdelta">
         </intent-filter>
     </activity>
 
-</application>
+    <!-- <activity android:name=".LoginActivity"></activity> -->
+     <activity android:name=".MenuActivity"></activity>
 
-</manifest>
+     <activity android:name=".CadastroActivity"></activity>
+
+     <activity android:name=".CadastroEnderecoActivity"></activity>
+
+     <activity android:name=".DetalheActivity"></activity>
+
+     <activity android:name=".FinalizacaoActivity"></activity>
+
+     <activity android:name=".PagamentoActivity"></activity>
+
+ </application>
+
+ </manifest>
 

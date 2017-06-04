@@ -38,7 +38,7 @@ import jumpers.delta.sistemasparainter.net.appdelta.material.DateDialog;
 
 public class CadastroActivity extends AppCompatActivity {
     private ProgressDialog dialog;
-    private JSONObject jsonCliente =new JSONObject();
+    private JSONObject jsonCliente = new JSONObject();
     private TextView cadCadastro;
     private EditText cadNome = null;
     private EditText cadEmail = null;
@@ -49,7 +49,7 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText cadResidencial;
     private EditText cadDatNasc;
     private CheckBox cadOpcao;
-    private Button cadBtnCadastrar ;
+    private Button cadBtnCadastrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +105,7 @@ public class CadastroActivity extends AppCompatActivity {
                 if (email.equals("")) {
                     cadEmail.setError("campo obrigatório");
                     return;
-                }else{
+                } else {
                     cliente.setEmailCliente(email);
                 }
                 if (senha.equals("")) {
@@ -114,25 +114,25 @@ public class CadastroActivity extends AppCompatActivity {
                 } else {
                     cliente.setSenhaCliente(senha);
                 }
-                if (cpf.equals("")&&(cpf.length() > 14)) {
+                if (cpf.equals("") && (cpf.length() > 14)) {
                     cadCpf.setError("campo obrigatório");
                     return;
                 } else {
-                    String cpfCusto = cpf.replaceAll("[^0-9]+","");
+                    String cpfCusto = cpf.replaceAll("[^0-9]+", "");
                     cliente.setCPFCliente(cpfCusto);
                 }
-                if(cadOpcao.isChecked()){
+                if (cadOpcao.isChecked()) {
                     cliente.setRecebeNewsLetter("1");
-                }else{
+                } else {
                     cliente.setRecebeNewsLetter("0");
                 }
-                String celularCusto = celular.replaceAll("[^0-9]+","");
+                String celularCusto = celular.replaceAll("[^0-9]+", "");
                 cliente.setCelularCliente(celularCusto);
 
-                String telComercialCusto = telComercial.replaceAll("[^0-9]+","");
+                String telComercialCusto = telComercial.replaceAll("[^0-9]+", "");
                 cliente.setTelComercialCliente(telComercialCusto);
 
-                String telResidencialCusto =telResidencial.replaceAll("[^0-9]+","");
+                String telResidencialCusto = telResidencial.replaceAll("[^0-9]+", "");
                 cliente.setTelResidencialCliente(telResidencialCusto);
 
                 cliente.setRecebeNewsLetter(newLesttter);
@@ -146,30 +146,30 @@ public class CadastroActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                String dataNacCusto = dataFormatada.replaceAll("[^0-9]+","");
+                String dataNacCusto = dataFormatada.replaceAll("[^0-9]+", "");
                 cliente.setDtNascCliente(dataNacCusto);
 
 
                 try {
-                    jsonCliente.put("nomeCompletoCliente",cliente.getNomeCompletoCliente());
-                    jsonCliente.put("emailCliente",cliente.getEmailCliente());
-                    jsonCliente.put("senhaCliente",cliente.getSenhaCliente());
-                    jsonCliente.put("cpfCliente",cliente.getCPFCliente());
-                    jsonCliente.put("celularCliente",cliente.getCelularCliente());
-                    jsonCliente.put("telComercialCliente",cliente.getTelComercialCliente());
-                    jsonCliente.put("telResidencialCliente",cliente.getTelResidencialCliente());
-                    jsonCliente.put("dtNascCliente",cliente.getDtNascCliente());
-                    jsonCliente.put("recebeNewsLetter",cliente.getNomeCompletoCliente());
+                    jsonCliente.put("nomeCompletoCliente", cliente.getNomeCompletoCliente());
+                    jsonCliente.put("emailCliente", cliente.getEmailCliente());
+                    jsonCliente.put("senhaCliente", cliente.getSenhaCliente());
+                    jsonCliente.put("cpfCliente", cliente.getCPFCliente());
+                    jsonCliente.put("celularCliente", cliente.getCelularCliente());
+                    jsonCliente.put("telComercialCliente", cliente.getTelComercialCliente());
+                    jsonCliente.put("telResidencialCliente", cliente.getTelResidencialCliente());
+                    jsonCliente.put("dtNascCliente", cliente.getDtNascCliente());
+                    jsonCliente.put("recebeNewsLetter", cliente.getNomeCompletoCliente());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 NetworkCall myCall = new NetworkCall();
-                myCall.execute((String)null);
+                myCall.execute((String) null);
                 String parametro = null;
 
                 System.out.println(jsonCliente);
-                dialog = ProgressDialog.show(CadastroActivity.this,"","Cadastrando...", false,true);
+                dialog = ProgressDialog.show(CadastroActivity.this, "", "Cadastrando...", false, true);
                 dialog.setIcon(R.drawable.ic_launcher);
                 dialog.setCancelable(false);
 
@@ -177,16 +177,16 @@ public class CadastroActivity extends AppCompatActivity {
         });
     }
 
-    public void onStart(){
+    public void onStart() {
         super.onStart();
 
         EditText cadDatNasc = (EditText) findViewById(R.id.cadDatNasc);
 
-        cadDatNasc.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        cadDatNasc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
                                                 @Override
                                                 public void onFocusChange(View v, boolean hasFocus) {
-                                                    if(hasFocus) {
+                                                    if (hasFocus) {
                                                         DateDialog dialog = new DateDialog(v);
                                                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                                                         dialog.show(ft, "Escolher data");
@@ -208,7 +208,7 @@ public class CadastroActivity extends AppCompatActivity {
             try {
                 // parametro = URLEncoder.encode("parametro","UTF-8");
                 URL url = new URL("http://deltaws.azurewebsites.net/g2/rest/cliente");
-                HttpURLConnection con= (HttpURLConnection) url.openConnection();
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setDoOutput(true);
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json");
