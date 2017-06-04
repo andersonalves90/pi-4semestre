@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_produto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jumpers.delta.sistemasparainter.net.appdelta.DetalheActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="6dp"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/detProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_below="@+id/detCategoriaProduto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text=" Nome Produto"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/detImageP"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/detProduto"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@android:drawable/presence_offline" />
+
+        <EditText
+            android:id="@+id/detPrecoProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/detImageP"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text=" Preço"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/detPromoProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/detPrecoProduto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text=" Desconto"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/detDescProduto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/detPromoProduto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text=" Categoria"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/detQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/detDescProduto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text=" Quantidade"
+            android:textSize="12sp" />
+
+
+        <EditText
+            android:id="@+id/detConte"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:ems="10"
+            android:inputType="numberSigned" />
+
+        <Button
+            android:id="@+id/detEntrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/detConte"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Comprar"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</RelativeLayout>
