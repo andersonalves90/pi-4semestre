@@ -5,14 +5,23 @@ package jumpers.delta.sistemasparainter.net.appdelta.entities;
  */
 
 public class Endereco {
-   private String nomeEndereco=null;
+    private int idCliente;
+    private String nomeEndereco=null;
     private String logradouroEndereco=null;
     private String numeroEndereco=null;
     private String CEPEndereco=null;
     private String complementoEndereco;
     private String cidadeEndereco=null;
-    private String paisEndereco;
+    private String paisEndereco = "Brasil";
     private String  UFEndereco;
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public String getNomeEndereco() {
         return nomeEndereco;

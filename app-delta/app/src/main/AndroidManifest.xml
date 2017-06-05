@@ -16,7 +16,7 @@ package="jumpers.delta.sistemasparainter.net.appdelta">
     </activity>
 
     <!-- <activity android:name=".LoginActivity"></activity> -->
-     <activity android:name=".MenuActivity"></activity>
+     <activity android:name=".MenuActivity"></activity> -->
 
      <activity android:name=".CadastroActivity"></activity>
 
@@ -27,6 +27,7 @@ package="jumpers.delta.sistemasparainter.net.appdelta">
      <activity android:name=".FinalizacaoActivity"></activity>
 
      <activity android:name=".PagamentoActivity"></activity>
+     <activity android:name=".QRCode"/>
 
  </application>
 

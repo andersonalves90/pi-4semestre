@@ -1,6 +1,7 @@
 package jumpers.delta.sistemasparainter.net.appdelta;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -26,6 +27,8 @@ public class MenuActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        MainActivity mainActivity = new MainActivity();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag_container,mainActivity ).commit();
 
         navigationView = (NavigationView) findViewById(R.id.navegar);
 
@@ -46,9 +49,9 @@ public class MenuActivity extends AppCompatActivity{
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragment).commit();
                     return true;
                 }else  if (menuItem.getItemId() == R.id.qr_code) {
-                    //QRCode  qrcode= new QRCode();
-                    //getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, qrcode).commit();
-                    //return true;
+                    Intent myIntent = new Intent(MenuActivity.this, QRCode.class);
+                    startActivity(myIntent);
+                    return true;
 
                 }else if (menuItem.getItemId() == R.id.carrinho) {
                     CarrinhoActivity fragment = new CarrinhoActivity();
@@ -56,7 +59,7 @@ public class MenuActivity extends AppCompatActivity{
                     return true;
 
             }else if (menuItem.getItemId() == R.id.encerrar) {
-          finish();
+                    finish();
 
             }
                 return false;

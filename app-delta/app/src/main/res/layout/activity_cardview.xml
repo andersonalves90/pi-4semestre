@@ -16,66 +16,84 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:padding="6dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:weightSum="1">
 
-        <EditText
-            android:id="@+id/maiProduto"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:layout_below="@+id/maiCategoriaProduto"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text=" Nome Produto"
-            android:textSize="12sp" />
+            android:layout_weight="0.84">
 
-        <ImageView
-            android:id="@+id/maiImageP"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/maiProduto"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@android:drawable/presence_offline" />
+            <TextView
+                android:id="@+id/textViewNomeProduto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="23dp"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <EditText
-            android:id="@+id/maiPrecoProduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:layout_below="@+id/maiImageP"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text=" Preço"
-            android:textSize="12sp" />
+            <ImageView
+                android:id="@+id/maiImageP"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/textViewNomeProduto"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="22dp"
+                app:srcCompat="@android:drawable/presence_offline" />
 
 
-        <EditText
-            android:id="@+id/maiDescProduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:layout_below="@+id/maiPrecoProduto"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text=" Categoria"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/textViewPrecoProduto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text="Preço"
+                android:textStyle="bold"
+                android:layout_below="@+id/textViewDescProduto"
+                android:layout_alignParentStart="true" />
 
+            <TextView
+                android:id="@+id/textViewValorProduto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R$ 100,00"
+                android:layout_below="@+id/textViewPrecoProduto"
+                android:layout_alignParentStart="true" />
 
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/maiImageP"
+                android:layout_marginTop="30dp"
+                android:text="Descrição"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/maiEntrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/maiProduto"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:text="Comprar"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/textViewDescProduto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView6"
+                android:layout_marginTop="13dp"
+                android:text="XXXXX" />
+
+            <Button
+                android:id="@+id/maiEntrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comprar"
+                android:textSize="20sp"
+                android:layout_below="@+id/textViewValorProduto"
+                android:layout_marginBottom="21dp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

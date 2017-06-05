@@ -14,11 +14,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import jumpers.delta.sistemasparainter.net.appdelta.entities.ClienteSingleton;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button imCadastro;
     private CheckBox imaChek;
     SharedPreferences prefs = null;
+    ClienteSingleton singleton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +47,20 @@ public class LoginActivity extends AppCompatActivity {
         imaChek = (CheckBox) findViewById(R.id.imaChek);
         imCadastro = (Button) findViewById(R.id.imCadastro);
 
-        /**
-        prefs = getSharedPreferences("logado", MODE_PRIVATE);
-        String configuracao = prefs.getString("logado","true");
+        prefs = getSharedPreferences("login", MODE_PRIVATE);
+        String logado = prefs.getString("logado",null);
+        String idCliente = prefs.getString("idCliente",null);
+        singleton = ClienteSingleton.getInstance();
 
-        if(configuracao.equals(true)){
-            System.out.println(configuracao);
+        if(logado.equals("true")){
+
+            if(!idCliente.isEmpty()){
+                singleton.setIdCliente(idCliente);
+                Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
-         **/
 
         imCadastro.setOnClickListener(new View.OnClickListener(){
 
@@ -57,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,CadastroActivity.class);
                 startActivity(intent);
+                finish();
             }
         }
         );
@@ -80,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 NetworkCall myCall = new NetworkCall();
 
-                myCall.execute ("http://deltaws.azurewebsites.net/g2/rest/cliente/" + email + "/" + senha );
+                myCall.execute ("http://192.168.0.5:8080/WSECommerce/rest/cliente/" + email + "/" + senha );
 
                 dialog = ProgressDialog.show(LoginActivity.this,"","Logando...", false,true);
                 dialog.setIcon(R.drawable.ic_launcher);
@@ -91,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public class NetworkCall extends AsyncTask<String, Void, String> {
+        private int resultCode = 0;
 
         @Override
         protected String doInBackground(String... params) {
@@ -107,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                     resultado.append(linha);
                     linha = bufferedReader.readLine();
                 }
+                resultCode = urlConnection.getResponseCode();
 
                 String respostaCompleta = resultado.toString();
 
@@ -124,32 +138,39 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             try {
-                if (result.equals("true")) {
+                if (resultCode == 200) {
 
-                    /**
+                    JSONObject json = new JSONObject(result);
+                    String resposta = json.getString("idCliente");
+
+                    singleton.setIdCliente(resposta);
+
+
                     if (imaChek.isChecked()) {
 
                         prefs = getSharedPreferences("login",
                                 MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString("logado", "true");
+                        editor.putString("idCliente", resposta);
                         editor.apply();
+
                     }
-                     **/
 
                     Intent intent = new Intent(LoginActivity.this,MenuActivity.class);
                     startActivity(intent);
+                    dialog.dismiss();
+                    finish();
 
                 } else {
                     AlertDialog.Builder builder = new
                             AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage("Você não está cadastrado!");
+                    builder.setMessage("Dados incorretos ou você não está cadastrado!");
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
-                    Intent intent = new Intent(LoginActivity.this,CadastroActivity.class);
-                    startActivity(intent);
+                    finish();
+
                 }
 
             } catch (Exception e) {

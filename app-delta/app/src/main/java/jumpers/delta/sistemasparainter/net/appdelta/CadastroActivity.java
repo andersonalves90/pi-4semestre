@@ -2,6 +2,7 @@ package jumpers.delta.sistemasparainter.net.appdelta;
 
 import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -31,8 +32,10 @@ import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Handler;
 
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Cliente;
+import jumpers.delta.sistemasparainter.net.appdelta.entities.ClienteSingleton;
 import jumpers.delta.sistemasparainter.net.appdelta.entities.Mask;
 import jumpers.delta.sistemasparainter.net.appdelta.material.DateDialog;
 
@@ -77,7 +80,6 @@ public class CadastroActivity extends AppCompatActivity {
         //até 3 caracteres
         cadOpcao = (CheckBox) findViewById(R.id.cadOpcao);
         cadBtnCadastrar = (Button) findViewById(R.id.cadBtnCadastrar);
-
 
         cadBtnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +137,6 @@ public class CadastroActivity extends AppCompatActivity {
                 String telResidencialCusto = telResidencial.replaceAll("[^0-9]+", "");
                 cliente.setTelResidencialCliente(telResidencialCusto);
 
-                cliente.setRecebeNewsLetter(newLesttter);
 
                 try {
                     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -159,14 +160,13 @@ public class CadastroActivity extends AppCompatActivity {
                     jsonCliente.put("telComercialCliente", cliente.getTelComercialCliente());
                     jsonCliente.put("telResidencialCliente", cliente.getTelResidencialCliente());
                     jsonCliente.put("dtNascCliente", cliente.getDtNascCliente());
-                    jsonCliente.put("recebeNewsLetter", cliente.getNomeCompletoCliente());
+                    jsonCliente.put("recebeNewsLetter", cliente.getRecebeNewsLetter());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 NetworkCall myCall = new NetworkCall();
                 myCall.execute((String) null);
-                String parametro = null;
 
                 System.out.println(jsonCliente);
                 dialog = ProgressDialog.show(CadastroActivity.this, "", "Cadastrando...", false, true);
@@ -202,12 +202,14 @@ public class CadastroActivity extends AppCompatActivity {
 
     public class NetworkCall extends AsyncTask<String, Void, String> {
 
+        private int resultCode = 0;
+
         @Override
         protected String doInBackground(String... params) {
 
             try {
-                // parametro = URLEncoder.encode("parametro","UTF-8");
-                URL url = new URL("http://deltaws.azurewebsites.net/g2/rest/cliente");
+                URL url = new URL("http://192.168.0.5:8080/WSECommerce/rest/cliente");
+
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setDoOutput(true);
                 con.setRequestMethod("POST");
@@ -216,7 +218,8 @@ public class CadastroActivity extends AppCompatActivity {
                 out.write(jsonCliente.toString());
 
                 out.close();
-                int resultCode = con.getResponseCode();
+
+                resultCode = con.getResponseCode();
                 System.out.println(con.getResponseCode());
                 InputStream in = con.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
@@ -224,16 +227,13 @@ public class CadastroActivity extends AppCompatActivity {
                 StringBuilder resultado = new StringBuilder();
                 String linha = bufferedReader.readLine();
 
-                // Lê linha a linha a resposta e armazena no StringBuilder
                 while (linha != null) {
                     resultado.append(linha);
                     linha = bufferedReader.readLine();
                 }
 
-                // Transforma o StringBuilder em String, que contém a resposta final
                 String respostaCompleta = resultado.toString();
 
-                // Retorna a string final contendo a resposta retornada
                 return respostaCompleta;
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -243,18 +243,54 @@ public class CadastroActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            // Caso tenha dado algum erro, retorna null
             return null;
         }
 
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            String respostaSnack = null;
 
             try {
 
+                dialog.dismiss();
+
+                if (resultCode == 200){
+                    respostaSnack = "Cliente Cadastrado com sucesso!";
+
+                    JSONObject json = new JSONObject(result);
+                    String resposta = json.getString("idCliente");
+
+                    ClienteSingleton singleton = ClienteSingleton.getInstance();
+                    singleton.setIdCliente(resposta);
+
+
+                }else if(resultCode == 500){
+                    respostaSnack = "Erro ao cadastrar, tente novamente";
+                }
+
                 Snackbar snackbar = Snackbar
-                        .make(cadBtnCadastrar, "Valor " + result, Snackbar.LENGTH_LONG);
+                        .make(cadBtnCadastrar, respostaSnack, Snackbar.LENGTH_LONG);
                 snackbar.show();
+
+                new Thread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        try
+                        {
+                            Thread.sleep(3000);
+                            Intent i = new Intent(getApplicationContext(), CadastroEnderecoActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
+                        catch (InterruptedException e)
+                        {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
 
 
             } catch (Exception e) {
