@@ -12,13 +12,16 @@
 
     <TextView
         android:text="Cadastre-se"
+        android:textSize="26sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="21dp"
-        android:id="@+id/cadCadastro" />
+        android:id="@+id/cadCadastro"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="155dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -79,7 +82,7 @@
         android:ems="10"
         android:layout_below="@+id/cadCelular"
         android:layout_alignStart="@+id/cadCelular"
-        android:hint="Telefone-Comercial"
+        android:hint="Telefone Comercial"
         android:id="@+id/cadComercial" />
     <EditText
         android:layout_width="wrap_content"
@@ -88,7 +91,7 @@
         android:ems="10"
         android:layout_below="@+id/cadComercial"
         android:layout_alignStart="@+id/cadComercial"
-        android:hint="Telefone-Residencial"
+        android:hint="Telefone Residencial"
         android:id="@+id/cadResidencial" />
     <EditText
         android:layout_width="wrap_content"
@@ -107,7 +110,7 @@
         android:layout_below="@+id/cadResidencial"
         android:layout_alignStart="@+id/cadDatNasc"
         android:layout_marginTop="40dp"
-        android:text="Aceita receber NewLestter" />
+        android:text="Assinar NewLestter" />
 
     <Button
         android:text="Cadastrar"
@@ -118,6 +121,5 @@
         android:id="@+id/cadBtnCadastrar"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
-
 
 </RelativeLayout>

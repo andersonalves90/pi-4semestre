@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class Produto {
     private int idProduto;
     private String nomeProduto;
-    private BigDecimal descProduto;
+    private String descProduto;
     private BigDecimal precProduto;
     private BigDecimal descPromocao;
     private int idCategoria;
@@ -34,11 +34,11 @@ public class Produto {
         this.nomeProduto = nomeProduto;
     }
 
-    public BigDecimal getDescProduto() {
+    public String getDescProduto() {
         return descProduto;
     }
 
-    public void setDescProduto(BigDecimal descProduto) {
+    public void setDescProduto(String descProduto) {
         this.descProduto = descProduto;
     }
 
@@ -89,6 +89,7 @@ public class Produto {
     public void setQtdMinEstoque(int qtdMinEstoque) {
         this.qtdMinEstoque = qtdMinEstoque;
     }
+
     public byte[] getImagem() {
         return imagem;
     }

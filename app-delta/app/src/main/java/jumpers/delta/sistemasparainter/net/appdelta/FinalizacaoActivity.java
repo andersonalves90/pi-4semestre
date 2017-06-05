@@ -41,7 +41,7 @@ public class FinalizacaoActivity extends AppCompatActivity {
         finVoltarLoja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FinalizacaoActivity.this,ProdutoActivity.class);
+                Intent intent = new Intent(FinalizacaoActivity.this,DetalheActivity.class);
                 startActivity(intent);
             }
         });

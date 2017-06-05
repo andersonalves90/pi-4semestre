@@ -11,6 +11,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jumpers.delta.sistemasparainter.net.appdelta.LoginActivity">
 
+    <ImageView
+        android:id="@+id/imagelogo"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_above="@+id/logEmail"
+        android:layout_alignParentEnd="true" />
+
     <TextView
         android:id="@+id/logLogin"
         android:layout_width="match_parent"
@@ -47,25 +56,43 @@
         android:textSize="20sp"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/logEntrar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+
+    <CheckBox
+        android:id="@+id/imaChek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="Deseja salvar os dados"
         android:layout_below="@+id/logSenha"
-        android:layout_marginTop="21dp"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/logEntrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Entrar"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/logSenha"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/imaChek" />
 
-    <ImageView
-        android:id="@+id/imagelogo"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="10dp"
-        app:srcCompat="@drawable/logo"
-        android:layout_above="@+id/logEmail"
-        android:layout_alignParentEnd="true" />
-
+    <Button
+        android:id="@+id/imCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cadastro"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/logEntrar"
+        android:layout_alignBottom="@+id/logEntrar"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/logEntrar" />
 
 </RelativeLayout>
